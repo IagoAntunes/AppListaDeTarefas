@@ -30,7 +30,7 @@
 
                 </StackLayout>
             </StackLayout>
-            <Button Text="Adicionar" HorizontalOptions="Center"/>
+            <Button Text="Adicionar" HorizontalOptions="Center" Clicked="ActionGoCadastro"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
