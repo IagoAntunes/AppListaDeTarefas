@@ -17,7 +17,10 @@
                             </OnPlatform>
                         </Image.Source>
                     </Image>
-                    <Label Text="Urgente e Importante" HorizontalOptions="FillAndExpand"/>
+                    <Label Text="Urgente e Importante" TextColor="Gray" HorizontalOptions="FillAndExpand"/>
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="PrioridadeSelectAction"/>
+                    </StackLayout.GestureRecognizers>
                 </StackLayout>
                 <StackLayout Orientation="Horizontal" Spacing="10">
                     <Image>
@@ -28,7 +31,7 @@
                             </OnPlatform>
                         </Image.Source>
                     </Image>
-                    <Label Text="Urgente e Não Importante" HorizontalOptions="FillAndExpand"/>
+                    <Label Text="Urgente e Não Importante" TextColor="Gray" HorizontalOptions="FillAndExpand"/>
                 </StackLayout>
                 <StackLayout Orientation="Horizontal" Spacing="10">
                     <Image>
@@ -39,7 +42,7 @@
                             </OnPlatform>
                         </Image.Source>
                     </Image>
-                    <Label Text="Não urgente e Importante" HorizontalOptions="FillAndExpand"/>
+                    <Label Text="Não urgente e Importante" TextColor="Gray" HorizontalOptions="FillAndExpand"/>
                 </StackLayout>
                 <StackLayout Orientation="Horizontal" Spacing="10">
                     <Image>
@@ -50,7 +53,7 @@
                             </OnPlatform>
                         </Image.Source>
                     </Image>
-                    <Label Text="Não Urgente e Não Importante" HorizontalOptions="FillAndExpand"/>
+                    <Label Text="Não Urgente e Não Importante" TextColor="Gray" HorizontalOptions="FillAndExpand"/>
                 </StackLayout>
             </StackLayout>
             <Button Text="Ok" TextColor="White" BackgroundColor="Blue" HorizontalOptions="End"/>
