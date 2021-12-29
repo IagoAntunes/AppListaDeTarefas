@@ -32,7 +32,6 @@ namespace AppListaDeTarefas.Telas
             {
                 LinhaStackLayout(tarefa);
             }
-
         }
 
         public void LinhaStackLayout(Tarefa tarefa)
