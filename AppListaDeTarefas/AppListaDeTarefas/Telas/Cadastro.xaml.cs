@@ -18,13 +18,16 @@ namespace AppListaDeTarefas.Telas
         }
         public void PrioridadeSelectAction(object sender,EventArgs args)
         {
-            var Stacks = SLPrioridades.Children as List<StackLayout>;
+            var Stacks = SLPrioridades.Children;
             foreach (var Linha in Stacks)
             {
                 Label lblPrioridade =  ((StackLayout)Linha).Children[1] as Label;
                 lblPrioridade.TextColor = Color.Gray;
             }
-            ((Label)((StackLayout)sender).Children[1]).TextColor = Color.Black;
+            ((Label)((StackLayout)sender).Children[1]).TextColor = Color.White;
+            FileImageSource Source = ((Image)((StackLayout)sender).Children[1]).Source as FileImageSource;
+            string prioridade = Source.File.ToString().Replace("Resources/","").Replace(".png","");
+            TxtNome.Text = prioridade;
         }
     }
 }
