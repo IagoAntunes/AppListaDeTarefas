@@ -28,13 +28,18 @@ namespace AppListaDeTarefas.Telas
             SLTarefas.Children.Clear();
 
             List<Tarefa> Lista = new GerenciadorTarefa().Listagem();
+            int i = 0;
+
+
+
             foreach (var tarefa in Lista)
             {
-                LinhaStackLayout(tarefa);
+                LinhaStackLayout(tarefa,i);
+                i++;
             }
         }
 
-        public void LinhaStackLayout(Tarefa tarefa)
+        public void LinhaStackLayout(Tarefa tarefa,int index)
         {
             Image Delete = new Image()
             {
@@ -46,6 +51,16 @@ namespace AppListaDeTarefas.Telas
             {
                 Delete.Source = ImageSource.FromFile("Resources/Delete.png");
             }
+            TapGestureRecognizer DeleteTap = new TapGestureRecognizer();
+            DeleteTap.Tapped += delegate
+            {
+                new GerenciadorTarefa().Remover(index);
+                CarregarTarefas();
+
+
+            };
+            Delete.GestureRecognizers.Add(DeleteTap);
+
 
             Image Prioridade = new Image()
             {
@@ -97,7 +112,15 @@ namespace AppListaDeTarefas.Telas
             {
                 Check.Source = ImageSource.FromFile("Resources/CheckOff.png");
             }
+            TapGestureRecognizer CheckTap = new TapGestureRecognizer();
+            CheckTap.Tapped += delegate
+            {
+                new GerenciadorTarefa().Finalizar(index,tarefa);
+                CarregarTarefas();
 
+
+            };
+            Check.GestureRecognizers.Add(CheckTap);
             StackLayout linha = new StackLayout()
             {
                 Orientation = StackOrientation.Horizontal,

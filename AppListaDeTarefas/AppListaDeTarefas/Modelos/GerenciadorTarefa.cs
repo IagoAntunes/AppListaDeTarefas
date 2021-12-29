@@ -12,6 +12,7 @@ namespace AppListaDeTarefas.Modelos
         {
             Lista = Listagem();
             Lista.RemoveAt(Index);
+            tarefa.dataFinalizacao = DateTime.Now;
             Lista.Add(tarefa);
 
             salvarProperties(Lista);
@@ -24,10 +25,11 @@ namespace AppListaDeTarefas.Modelos
             salvarProperties(Lista);
 
         }
-        public void Remover(Tarefa tarefa)
+        public void Remover(int index)
         {
             Lista = Listagem();
-            Lista.Remove(tarefa);
+            Lista.RemoveAt(index);
+
 
             salvarProperties(Lista);
 
