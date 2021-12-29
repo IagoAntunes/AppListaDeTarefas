@@ -29,7 +29,7 @@ namespace AppListaDeTarefas.Telas
             ((Label)((StackLayout)sender).Children[1]).TextColor = Color.White;
             FileImageSource Source = ((Image)((StackLayout)sender).Children[0]).Source as FileImageSource;
             string Prioridade = Source.File.ToString().Replace("Resources/p","").Replace(".png","");
-
+         
             this.Prioridade = byte.Parse(Prioridade);
 
         }
