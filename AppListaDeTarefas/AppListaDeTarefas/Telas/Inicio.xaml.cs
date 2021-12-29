@@ -112,6 +112,14 @@ namespace AppListaDeTarefas.Telas
             {
                 Check.Source = ImageSource.FromFile("Resources/CheckOff.png");
             }
+            if(tarefa.dataFinalizacao != null)
+            {
+                Check.Source = ImageSource.FromFile("CheckOn.png");
+                if (Device.RuntimePlatform == Device.UWP)
+                {
+                    Check.Source = ImageSource.FromFile("Resources/CheckOn.png");
+                }
+            }
             TapGestureRecognizer CheckTap = new TapGestureRecognizer();
             CheckTap.Tapped += delegate
             {
