@@ -7,7 +7,7 @@
             <StackLayout BackgroundColor="Blue" HeightRequest="250">
                 <Label Text="My Day" FontAttributes="Bold" FontSize="24" TextColor="White" 
                        HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" />
-                <Label Text="Quinta , 22/02" FontAttributes="Bold" TextColor="White"
+                <Label Text="Quinta , 22/02" x:Name="DataHoje" FontAttributes="Bold" TextColor="White"
                        HorizontalOptions="Start" VerticalOptions="End"/>
             </StackLayout>
             <StackLayout x:Name="SLTarefas" Spacing="10" Padding="10">
