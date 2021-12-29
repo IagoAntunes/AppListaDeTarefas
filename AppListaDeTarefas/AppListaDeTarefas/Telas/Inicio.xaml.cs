@@ -24,13 +24,56 @@ namespace AppListaDeTarefas.Telas
         }
         public void LinhaStackLayout(Tarefa tarefa)
         {
-
-            Label txtTarefa = new Label()
+            Image Delete = new Image()
             {
                 VerticalOptions = LayoutOptions.Center,
-                HorizontalOptions = LayoutOptions.FillAndExpand,
-                Text = tarefa.Nome
+                Source = ImageSource.FromFile("Delete.png")
             };
+
+            if (Device.RuntimePlatform == Device.UWP)
+            {
+                Delete.Source = ImageSource.FromFile("Resources/Delete.png");
+            }
+
+            Image Prioridade = new Image()
+            {
+                VerticalOptions = LayoutOptions.Center,
+                Source = ImageSource.FromFile(tarefa.Prioridade + ".png")
+            };
+
+            if (Device.RuntimePlatform == Device.UWP)
+            {
+                Prioridade.Source = ImageSource.FromFile("Resources/" + tarefa.Prioridade + ".png");
+            }
+            View StackCentral = null;
+            if(tarefa.dataFinalizacao == null)
+            {
+                StackCentral = new Label()
+                {
+                    VerticalOptions = LayoutOptions.Center,
+                    HorizontalOptions = LayoutOptions.FillAndExpand,
+                    Text = tarefa.Nome
+                };
+            }
+            else
+            {
+                StackCentral = new StackLayout()
+                {
+                    VerticalOptions = LayoutOptions.Center,
+                    Spacing = 0,
+                    HorizontalOptions = LayoutOptions.FillAndExpand
+                };
+                ((StackLayout)StackCentral).Children.Add(new Label() { Text = tarefa.Nome, TextColor = Color.Gray });
+                ((StackLayout)StackCentral).Children.Add(new Label()
+                {
+                    Text = "Finalizado em " + tarefa.dataFinalizacao.ToString("dd/MM/yyyy - hh:mm" + "h"),
+                    TextColor = Color.Gray,
+                    FontSize = 10
+                });
+            };
+
+
+    
 
             Image Check = new Image()
             {
@@ -50,8 +93,11 @@ namespace AppListaDeTarefas.Telas
             };
 
             linha.Children.Add(Check);
+            linha.Children.Add(StackCentral);
+            linha.Children.Add(Prioridade);
+            linha.Children.Add(Delete);
 
-
+            SLTarefas.Children.Add(linha);
         }
     }
 }
