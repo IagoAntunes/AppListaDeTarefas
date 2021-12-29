@@ -16,12 +16,25 @@ namespace AppListaDeTarefas.Telas
         public Inicio()
         {
             InitializeComponent();
+            CarregarTarefas();
             DataHoje.Text = DateTime.Now.DayOfWeek.ToString() + "," + DateTime.Now.ToString("dd/MM");
         }
         public void ActionGoCadastro(object sender,EventArgs args)
         {
             Navigation.PushAsync(new Cadastro());
         }
+        private void CarregarTarefas()
+        {
+            SLTarefas.Children.Clear();
+
+            List<Tarefa> Lista = new GerenciadorTarefa().Listagem();
+            foreach (var tarefa in Lista)
+            {
+                LinhaStackLayout(tarefa);
+            }
+
+        }
+
         public void LinhaStackLayout(Tarefa tarefa)
         {
             Image Delete = new Image()
@@ -38,12 +51,12 @@ namespace AppListaDeTarefas.Telas
             Image Prioridade = new Image()
             {
                 VerticalOptions = LayoutOptions.Center,
-                Source = ImageSource.FromFile(tarefa.Prioridade + ".png")
+                Source = ImageSource.FromFile("p"+tarefa.Prioridade + ".png")
             };
 
             if (Device.RuntimePlatform == Device.UWP)
             {
-                Prioridade.Source = ImageSource.FromFile("Resources/" + tarefa.Prioridade + ".png");
+                Prioridade.Source = ImageSource.FromFile("Resources/p" + tarefa.Prioridade + ".png");
             }
             View StackCentral = null;
             if(tarefa.dataFinalizacao == null)
@@ -66,7 +79,7 @@ namespace AppListaDeTarefas.Telas
                 ((StackLayout)StackCentral).Children.Add(new Label() { Text = tarefa.Nome, TextColor = Color.Gray });
                 ((StackLayout)StackCentral).Children.Add(new Label()
                 {
-                    Text = "Finalizado em " + tarefa.dataFinalizacao.ToString("dd/MM/yyyy - hh:mm" + "h"),
+                    Text = "Finalizado em " + tarefa.dataFinalizacao.Value.ToString("dd/MM/yyyy - hh:mm" + "h"),
                     TextColor = Color.Gray,
                     FontSize = 10
                 });
